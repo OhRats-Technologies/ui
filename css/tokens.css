@@ -1,0 +1,32 @@
+:root {
+    --bg-primary: #efede5;
+    --bg-surface: #ffffff;
+    --bg-surface-hover: #f5f5f5;
+    --text-primary: #1a1a1b;
+    --text-muted: #595959;
+    --border-color: #634936;
+    --grid-line: rgba(99, 73, 54, 0.1);
+    --selection-bg: #1a1a1b;
+    --selection-text: #efede5;
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+
+    --font-primary: 'Inter', system-ui, sans-serif;
+    --font-mono: 'Space Mono', monospace;
+}
+
+html.dark {
+    --bg-primary: #1a1a1b;
+    --bg-surface: #202021;
+    --bg-surface-hover: #2a2a2b;
+    --text-primary: #efede5;
+    --text-muted: #a3a393;
+    --border-color: #634936;
+    --grid-line: #2a2a2b;
+    --selection-bg: #efede5;
+    --selection-text: #1a1a1b;
+}
