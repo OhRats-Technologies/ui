@@ -190,6 +190,29 @@
     color: var(--or-text);
 }
 
+
+.github-link {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--or-text-muted);
+    display: inline-grid;
+    place-items: center;
+    transition: color 0.3s ease;
+}
+
+.github-link::before {
+    content: "";
+    width: 1.125rem;
+    height: 1.125rem;
+    background: currentColor;
+    -webkit-mask: url("github.svg") center / contain no-repeat;
+    mask: url("github.svg") center / contain no-repeat;
+}
+
+.github-link:hover {
+    color: var(--or-text);
+}
+
 .cta-button {
     padding: 0.5rem 1.25rem;
     background: var(--or-text);
