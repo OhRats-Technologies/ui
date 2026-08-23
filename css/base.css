@@ -11,17 +11,17 @@ html {
 
 body {
     min-height: 100vh;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: var(--font-primary);
+    background: var(--or-bg);
+    color: var(--or-text);
+    font-family: var(--or-font-sans);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-    background: var(--selection-bg);
-    color: var(--selection-text);
+    background: var(--or-selection);
+    color: var(--or-selection-text);
 }
 
 a {

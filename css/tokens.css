@@ -1,32 +1,32 @@
 :root {
-    --bg-primary: #efede5;
-    --bg-surface: #ffffff;
-    --bg-surface-hover: #f5f5f5;
-    --text-primary: #1a1a1b;
-    --text-muted: #595959;
-    --border-color: #634936;
-    --grid-line: rgba(99, 73, 54, 0.1);
-    --selection-bg: #1a1a1b;
-    --selection-text: #efede5;
+    --or-bg: #efede5;
+    --or-surface: #ffffff;
+    --or-surface-hover: #f5f5f5;
+    --or-text: #1a1a1b;
+    --or-text-muted: #595959;
+    --or-border: #634936;
+    --or-grid: rgba(99, 73, 54, 0.1);
+    --or-selection: #1a1a1b;
+    --or-selection-text: #efede5;
 
-    --space-xs: 0.5rem;
-    --space-sm: 1rem;
-    --space-md: 1.5rem;
-    --space-lg: 2rem;
-    --space-xl: 4rem;
+    --or-space-xs: 0.5rem;
+    --or-space-sm: 1rem;
+    --or-space-md: 1.5rem;
+    --or-space-lg: 2rem;
+    --or-space-xl: 4rem;
 
-    --font-primary: 'Inter', system-ui, sans-serif;
-    --font-mono: 'Space Mono', monospace;
+    --or-font-sans: 'Inter', system-ui, sans-serif;
+    --or-font-mono: 'Space Mono', monospace;
 }
 
 html.dark {
-    --bg-primary: #1a1a1b;
-    --bg-surface: #202021;
-    --bg-surface-hover: #2a2a2b;
-    --text-primary: #efede5;
-    --text-muted: #a3a393;
-    --border-color: #634936;
-    --grid-line: #2a2a2b;
-    --selection-bg: #efede5;
-    --selection-text: #1a1a1b;
+    --or-bg: #1a1a1b;
+    --or-surface: #202021;
+    --or-surface-hover: #2a2a2b;
+    --or-text: #efede5;
+    --or-text-muted: #a3a393;
+    --or-border: #634936;
+    --or-grid: #2a2a2b;
+    --or-selection: #efede5;
+    --or-selection-text: #1a1a1b;
 }
