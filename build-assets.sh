@@ -4,11 +4,9 @@ set -eu
 src="${1:-.}"
 out="${2:-/out}"
 assets="$out/assets"
-current="$out/current"
-latest="$out/latest"
 
 rm -rf "$out"
-mkdir -p "$assets" "$current" "$latest"
+mkdir -p "$assets"
 
 hash_file() {
     sha256sum "$1" | cut -c1-12
@@ -23,17 +21,14 @@ publish() {
     target="$stem.$hash$ext"
     cp "$source" "$assets/$target"
     [ "$source" = "$out/$public_name" ] || cp "$source" "$out/$public_name"
-    cp "$source" "$current/$public_name"
-    cp "$source" "$latest/$public_name"
 }
 
 github_hash="$(hash_file "$src/images/github.svg")"
 github_target="github.$github_hash.svg"
 
 # Shared CSS is fingerprinted together with the GitHub icon, so its internal
-# dependency can point directly at the immutable asset instead of paying the
-# stable /current/* redirect on every page load.
-awk -v target="/assets/$github_target" '{ gsub(/\/current\/github\.svg/, target); print }' \
+# dependency points directly at the immutable asset.
+awk -v target="/assets/$github_target" '{ gsub(/\/github\.svg/, target); print }' \
     "$src/css/header.css" > "$out/header.css"
 
 publish "$src/images/github.svg" github.svg
