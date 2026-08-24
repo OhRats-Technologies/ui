@@ -30,6 +30,41 @@ a {
     text-decoration: none;
 }
 
+.or-button {
+    min-height: 40px;
+    padding: 0.55rem 1rem;
+    border: 0;
+    background: var(--or-text);
+    color: var(--or-bg);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--or-font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color var(--or-theme-transition), color var(--or-theme-transition), opacity 0.2s ease;
+}
+
+.or-button:hover {
+    opacity: 0.88;
+}
+
+.or-button:focus-visible {
+    outline: 1px solid var(--or-text);
+    outline-offset: 3px;
+}
+
+.or-button:disabled,
+.or-button[aria-disabled="true"] {
+    cursor: default;
+    opacity: 0.35;
+}
+
 h1,
 h2,
 h3,

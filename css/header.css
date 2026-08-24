@@ -213,25 +213,6 @@
     color: var(--or-text);
 }
 
-.cta-button {
-    padding: 0.5rem 1.25rem;
-    background: var(--or-text);
-    color: var(--or-bg);
-    font-family: var(--or-font-mono);
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: background-color var(--or-theme-transition), color var(--or-theme-transition), opacity 0.2s ease;
-}
-
-.cta-button:hover {
-    opacity: 0.9;
-}
-
 .divider {
     width: 1px;
     height: 1rem;
