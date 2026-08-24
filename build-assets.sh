@@ -22,14 +22,16 @@ publish() {
     hash="$(hash_file "$source")"
     target="$stem.$hash$ext"
     cp "$source" "$assets/$target"
-    cat >> "$redirects" <<EOF
-location = /latest/$public_name {
+    for alias in current latest; do
+        cat >> "$redirects" <<EOF
+location = /$alias/$public_name {
     add_header Access-Control-Allow-Origin "*" always;
-    add_header Cache-Control "no-cache" always;
-    add_header Cloudflare-CDN-Cache-Control "no-cache" always;
+    add_header Cache-Control "no-store" always;
+    add_header Cloudflare-CDN-Cache-Control "no-store" always;
     return 307 /assets/$target;
 }
 EOF
+    done
 }
 
 cat "$src/css/tokens.css" "$src/css/base.css" "$src/css/header.css" > "$out/ohrats.css"
