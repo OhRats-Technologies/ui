@@ -22,7 +22,7 @@ publish() {
     hash="$(hash_file "$source")"
     target="$stem.$hash$ext"
     cp "$source" "$assets/$target"
-    cp "$source" "$out/$public_name"
+    [ "$source" = "$out/$public_name" ] || cp "$source" "$out/$public_name"
     cp "$source" "$current/$public_name"
     cp "$source" "$latest/$public_name"
 }
@@ -46,5 +46,3 @@ publish "$src/js/theme.js" theme.js
 publish "$src/js/menu.js" menu.js
 publish "$src/images/logo.png" logo.png
 publish "$src/images/logo.svg" logo.svg
-
-rm "$out/ohrats.css" "$out/header.css"
