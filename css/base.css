@@ -58,3 +58,27 @@ h4 {
     background-color: var(--or-border);
     transition: background-color var(--or-theme-transition);
 }
+
+.ohrats-grid {
+    position: absolute;
+    inset: 0;
+    background-size: var(--or-grid-size, 40px) var(--or-grid-size, 40px);
+    background-image:
+        linear-gradient(to right, var(--or-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--or-grid) 1px, transparent 1px);
+    mask-image: linear-gradient(to bottom, black var(--or-grid-fade-start, 40%), transparent var(--or-grid-fade-end, 100%));
+    -webkit-mask-image: linear-gradient(to bottom, black var(--or-grid-fade-start, 40%), transparent var(--or-grid-fade-end, 100%));
+    opacity: var(--or-grid-opacity, 0.2);
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+    }
+}
