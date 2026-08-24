@@ -4,11 +4,11 @@ set -eu
 src="${1:-.}"
 out="${2:-/out}"
 assets="$out/assets"
-redirects="$out/redirects.conf"
+current="$out/current"
+latest="$out/latest"
 
 rm -rf "$out"
-mkdir -p "$assets"
-: > "$redirects"
+mkdir -p "$assets" "$current" "$latest"
 
 hash_file() {
     sha256sum "$1" | cut -c1-12
@@ -22,16 +22,8 @@ publish() {
     hash="$(hash_file "$source")"
     target="$stem.$hash$ext"
     cp "$source" "$assets/$target"
-    for alias in current latest; do
-        cat >> "$redirects" <<EOF
-location = /$alias/$public_name {
-    add_header Access-Control-Allow-Origin "*" always;
-    add_header Cache-Control "private, max-age=300, must-revalidate" always;
-    add_header Cloudflare-CDN-Cache-Control "public, max-age=300, must-revalidate" always;
-    return 307 /assets/$target;
-}
-EOF
-    done
+    cp "$source" "$current/$public_name"
+    cp "$source" "$latest/$public_name"
 }
 
 github_hash="$(hash_file "$src/images/github.svg")"
