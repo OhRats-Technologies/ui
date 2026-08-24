@@ -1,6 +1,8 @@
 (function () {
     const root = document.documentElement;
     const storageKey = "theme";
+    const cookieKey = "ohrats_theme";
+    const cookieDomain = "ohrats.party";
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
     const icons = {
@@ -8,11 +10,40 @@
         light: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>'
     };
 
-    function savedTheme() {
+    function cookieTheme() {
+        const prefix = `${cookieKey}=`;
+        const value = document.cookie
+            .split("; ")
+            .find((entry) => entry.startsWith(prefix))
+            ?.slice(prefix.length);
+
+        return value === "dark" || value === "light" ? value : null;
+    }
+
+    function localTheme() {
         try {
-            return localStorage.getItem(storageKey);
+            const value = localStorage.getItem(storageKey);
+            return value === "dark" || value === "light" ? value : null;
         } catch (_) {
             return null;
+        }
+    }
+
+    function savedTheme() {
+        return cookieTheme() || localTheme();
+    }
+
+    function canShareCookie() {
+        return location.hostname === cookieDomain || location.hostname.endsWith(`.${cookieDomain}`);
+    }
+
+    function persistTheme(theme) {
+        try {
+            localStorage.setItem(storageKey, theme);
+        } catch (_) {}
+
+        if (canShareCookie()) {
+            document.cookie = `${cookieKey}=${theme}; Path=/; Domain=${cookieDomain}; Max-Age=31536000; SameSite=Lax; Secure`;
         }
     }
 
@@ -31,9 +62,7 @@
         root.dataset.theme = isDark ? "dark" : "light";
 
         if (persist) {
-            try {
-                localStorage.setItem(storageKey, isDark ? "dark" : "light");
-            } catch (_) {}
+            persistTheme(isDark ? "dark" : "light");
         }
 
         render();
@@ -45,6 +74,11 @@
         return saved === "dark" || saved === "light" ? saved : (media.matches ? "dark" : "light");
     }
 
+    function syncSharedTheme() {
+        const shared = cookieTheme();
+        if (shared && shared !== root.dataset.theme) apply(shared, true);
+    }
+
     function bind() {
         render();
         document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
@@ -54,7 +88,10 @@
         });
     }
 
-    apply(preferredTheme(), false);
+    const saved = savedTheme();
+    const initial = saved || preferredTheme();
+    if (saved && canShareCookie()) persistTheme(saved);
+    apply(initial, false);
 
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", bind, { once: true });
@@ -64,6 +101,11 @@
 
     media.addEventListener("change", () => {
         if (!savedTheme()) apply(media.matches ? "dark" : "light", false);
+    });
+
+    window.addEventListener("focus", syncSharedTheme);
+    document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) syncSharedTheme();
     });
 
     window.OhRatsTheme = { apply };
