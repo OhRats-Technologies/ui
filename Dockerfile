@@ -8,8 +8,6 @@ RUN ./build-assets.sh /src /out
 
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=assets /out/assets/ /usr/share/nginx/html/assets/
-COPY --from=assets /out/current/ /usr/share/nginx/html/current/
-COPY --from=assets /out/latest/ /usr/share/nginx/html/latest/
+COPY --from=assets /out/ /usr/share/nginx/html/
 
 EXPOSE 80

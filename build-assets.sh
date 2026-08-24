@@ -22,6 +22,7 @@ publish() {
     hash="$(hash_file "$source")"
     target="$stem.$hash$ext"
     cp "$source" "$assets/$target"
+    cp "$source" "$out/$public_name"
     cp "$source" "$current/$public_name"
     cp "$source" "$latest/$public_name"
 }
