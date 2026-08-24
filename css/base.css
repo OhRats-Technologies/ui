@@ -15,7 +15,7 @@ body {
     color: var(--or-text);
     font-family: var(--or-font-sans);
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--or-theme-transition), color var(--or-theme-transition);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -35,4 +35,26 @@ h2,
 h3,
 h4 {
     line-height: 1.2;
+}
+
+.badge-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.badge-text {
+    color: var(--or-text);
+    font-family: var(--or-font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    transition: color var(--or-theme-transition);
+}
+
+.badge-line {
+    width: 2rem;
+    height: 1px;
+    opacity: 0.5;
+    background-color: var(--or-border);
+    transition: background-color var(--or-theme-transition);
 }

@@ -8,7 +8,7 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--or-border);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color var(--or-theme-transition), border-color var(--or-theme-transition);
 }
 
 .nav-container {
@@ -33,7 +33,7 @@
     gap: 0.75rem;
     color: var(--or-text);
     text-decoration: none;
-    transition: opacity 0.2s, color 0.3s ease;
+    transition: opacity 0.2s, color var(--or-theme-transition);
 }
 
 .logo-image {
@@ -69,7 +69,7 @@
     font-family: var(--or-font-mono);
     font-size: 0.625rem;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: color var(--or-theme-transition);
 }
 
 .menu-label {
@@ -78,7 +78,7 @@
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: color var(--or-theme-transition);
 }
 
 .menu-item:hover .menu-number,
@@ -99,7 +99,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s ease;
+    transition: color var(--or-theme-transition);
 }
 
 .theme-toggle:hover {
@@ -127,7 +127,7 @@
     flex-direction: column;
     gap: 1.5rem;
     z-index: 100;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color var(--or-theme-transition), border-color var(--or-theme-transition);
 }
 
 .mobile-menu.open {
@@ -183,7 +183,7 @@
     font-size: 0.75rem;
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 0.3s ease;
+    transition: color var(--or-theme-transition);
 }
 
 .cta-link:hover {
@@ -197,7 +197,7 @@
     color: var(--or-text-muted);
     display: inline-grid;
     place-items: center;
-    transition: color 0.3s ease;
+    transition: color var(--or-theme-transition);
 }
 
 .github-icon {
@@ -225,7 +225,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.2s ease;
+    transition: background-color var(--or-theme-transition), color var(--or-theme-transition), opacity 0.2s ease;
 }
 
 .cta-button:hover {
@@ -236,14 +236,14 @@
     width: 1px;
     height: 1rem;
     background: var(--or-border);
-    transition: background-color 0.3s ease;
+    transition: background-color var(--or-theme-transition);
 }
 
 .mobile-divider {
     width: 100%;
     height: 1px;
     background: var(--or-border);
-    transition: background-color 0.3s ease;
+    transition: background-color var(--or-theme-transition);
 }
 
 @media (min-width: 1024px) {
