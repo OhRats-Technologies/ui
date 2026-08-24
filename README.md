@@ -2,4 +2,4 @@
 
 Shared visual language for OhRats Technologies.
 
-Consumers use stable root URLs such as `/ohrats.css`, `/theme.js`, and `/logo.svg`; they serve the current bytes directly and revalidate normally. Content-fingerprinted `/assets/*` files remain available for immutable references.
+Consumers use content-fingerprinted `/assets/*` URLs directly. Shared assets are immutable and do not have mutable aliases or redirecting compatibility URLs.
