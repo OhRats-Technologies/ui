@@ -21,6 +21,7 @@
 .or-copy-field code {
     min-width: 0;
     flex: 1;
+    line-height: 1.4;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
