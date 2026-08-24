@@ -42,6 +42,7 @@ publish "$src/css/header.css" header.css
 publish "$src/js/theme.js" theme.js
 publish "$src/js/menu.js" menu.js
 publish "$src/images/logo.png" logo.png
+publish "$src/images/logo.svg" logo.svg
 publish "$src/images/github.svg" github.svg
 
 rm "$out/ohrats.css"
