@@ -34,15 +34,24 @@ EOF
     done
 }
 
-cat "$src/css/tokens.css" "$src/css/base.css" "$src/css/header.css" > "$out/ohrats.css"
+github_hash="$(hash_file "$src/images/github.svg")"
+github_target="github.$github_hash.svg"
+
+# Shared CSS is fingerprinted together with the GitHub icon, so its internal
+# dependency can point directly at the immutable asset instead of paying the
+# stable /current/* redirect on every page load.
+awk -v target="/assets/$github_target" '{ gsub(/\/current\/github\.svg/, target); print }' \
+    "$src/css/header.css" > "$out/header.css"
+
+publish "$src/images/github.svg" github.svg
+cat "$src/css/tokens.css" "$src/css/base.css" "$out/header.css" > "$out/ohrats.css"
 publish "$out/ohrats.css" ohrats.css
 publish "$src/css/tokens.css" tokens.css
 publish "$src/css/base.css" base.css
-publish "$src/css/header.css" header.css
+publish "$out/header.css" header.css
 publish "$src/js/theme.js" theme.js
 publish "$src/js/menu.js" menu.js
 publish "$src/images/logo.png" logo.png
 publish "$src/images/logo.svg" logo.svg
-publish "$src/images/github.svg" github.svg
 
-rm "$out/ohrats.css"
+rm "$out/ohrats.css" "$out/header.css"
