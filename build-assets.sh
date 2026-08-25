@@ -40,6 +40,7 @@ publish "$out/copy.css" copy.css
 cat "$src/css/tokens.css" "$src/css/base.css" "$out/header.css" > "$out/ohrats.css"
 publish "$out/ohrats.css" ohrats.css
 publish "$src/css/tokens.css" tokens.css
+publish "$src/css/states.css" states.css
 publish "$src/css/base.css" base.css
 publish "$out/header.css" header.css
 publish "$src/js/theme.js" theme.js

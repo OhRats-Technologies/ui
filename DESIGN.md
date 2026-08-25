@@ -11,6 +11,8 @@ Minimal, data-first, and slightly brutalist: sharp edges, visible borders, warm 
 | Text | `#1a1a1b` | `#efede5` |
 | Border | `#634936` | `#634936` |
 
+Optional `states.css` adds semantic `--or-positive` and `--or-negative` tokens for compact status indicators. Use them for meaning-bearing state, not decoration.
+
 ## Type
 
 - Inter for prose and headings.
