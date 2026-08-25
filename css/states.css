@@ -1,9 +1,11 @@
 :root {
     --or-positive: #2f9e62;
     --or-negative: #d95555;
+    --or-on-negative: #ffffff;
 }
 
 html.dark {
     --or-positive: #43b777;
     --or-negative: #e26464;
+    --or-on-negative: #ffffff;
 }
