@@ -17,6 +17,7 @@ Optional `states.css` adds semantic `--or-positive` and `--or-negative` tokens f
 
 - Inter for prose and headings.
 - Space Mono for labels, numbers, and technical data.
+- Use the shared `.or-article` / `.or-article-header` / `.or-article-content` primitive for long-form editorial and documentation articles. Do not recreate its width or typography in product-local CSS.
 
 ## Principles
 
