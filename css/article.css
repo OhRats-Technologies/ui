@@ -1,23 +1,23 @@
-.or-article,
 :root {
     --or-article-max-width: 800px;
 }
 
 .or-article {
+    width: 100%;
     max-width: var(--or-article-max-width);
     margin: 0 auto;
-    padding: 4rem 1.5rem;
+    padding: var(--or-space-xl) var(--or-space-md);
 }
 
 .or-article-header {
-    margin-bottom: 4rem;
+    margin-bottom: var(--or-space-xl);
     border-bottom: 1px solid var(--or-border);
-    padding-bottom: 2rem;
+    padding-bottom: var(--or-space-lg);
 }
 
 .or-article-meta {
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: var(--or-space-sm);
     color: var(--or-text-muted);
     font-family: var(--or-font-mono);
     font-size: 0.875rem;
@@ -38,14 +38,14 @@
 }
 
 .or-article-content h2 {
-    margin: 3rem 0 1.5rem;
+    margin: 3rem 0 var(--or-space-md);
     border-left: 4px solid var(--or-border);
-    padding-left: 1.5rem;
+    padding-left: var(--or-space-md);
     font-size: 1.75rem;
     font-weight: 500;
 }
 
-.or-article-content p { margin-bottom: 1.5rem; }
+.or-article-content p { margin-bottom: var(--or-space-md); }
 .or-article-content ul,
-.or-article-content ol { margin-bottom: 2rem; padding-left: 1.5rem; }
-.or-article-content li { margin-bottom: 1rem; }
+.or-article-content ol { margin-bottom: var(--or-space-lg); padding-left: var(--or-space-md); }
+.or-article-content li { margin-bottom: var(--or-space-sm); }
