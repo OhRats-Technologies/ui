@@ -3,6 +3,7 @@ WORKDIR /src
 COPY css ./css
 COPY js ./js
 COPY images ./images
+COPY fonts ./fonts
 COPY build-assets.sh ./
 RUN ./build-assets.sh /src /out
 
