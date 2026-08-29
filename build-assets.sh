@@ -26,6 +26,8 @@ github_hash="$(hash_file "$src/images/github.svg")"
 github_target="github.$github_hash.svg"
 copy_hash="$(hash_file "$src/images/copy.svg")"
 copy_target="copy.$copy_hash.svg"
+font_hash="$(hash_file "$src/fonts/MesloLGSNerdFontMono-Regular.woff2")"
+font_target="MesloLGSNerdFontMono-Regular.$font_hash.woff2"
 
 # Shared CSS is fingerprinted together with the GitHub icon, so its internal
 # dependency points directly at the immutable asset.
@@ -34,12 +36,15 @@ awk -v target="/assets/$github_target" '{ gsub(/\/github\.svg/, target); print }
 
 publish "$src/images/github.svg" github.svg
 publish "$src/images/copy.svg" copy.svg
+publish "$src/fonts/MesloLGSNerdFontMono-Regular.woff2" MesloLGSNerdFontMono-Regular.woff2
 awk -v target="/assets/$copy_target" '{ gsub(/\/copy\.svg/, target); print }' \
     "$src/css/copy.css" > "$out/copy.css"
 publish "$out/copy.css" copy.css
-cat "$src/css/tokens.css" "$src/css/base.css" "$out/header.css" "$src/css/footer.css" "$src/css/article.css" > "$out/ohrats.css"
+awk -v target="/assets/$font_target" '{ gsub(/\/MesloLGSNerdFontMono-Regular\.woff2/, target); print }' \
+    "$src/css/tokens.css" > "$out/tokens.css"
+cat "$out/tokens.css" "$src/css/base.css" "$out/header.css" "$src/css/footer.css" "$src/css/article.css" > "$out/ohrats.css"
 publish "$out/ohrats.css" ohrats.css
-publish "$src/css/tokens.css" tokens.css
+publish "$out/tokens.css" tokens.css
 publish "$src/css/states.css" states.css
 publish "$src/css/base.css" base.css
 publish "$out/header.css" header.css
@@ -50,4 +55,4 @@ publish "$src/js/menu.js" menu.js
 publish "$src/images/logo.png" logo.png
 publish "$src/images/logo.svg" logo.svg
 
-rm "$out/ohrats.css" "$out/header.css" "$out/copy.css"
+rm "$out/ohrats.css" "$out/header.css" "$out/copy.css" "$out/tokens.css"
