@@ -54,6 +54,18 @@ a {
     opacity: 0.88;
 }
 
+.or-button.secondary {
+    background: transparent;
+    color: var(--or-text);
+    border: 1px solid var(--or-border);
+}
+
+.or-button.secondary:hover {
+    background: var(--or-surface-hover);
+    border-color: var(--or-text);
+    opacity: 1;
+}
+
 .or-button:focus-visible {
     outline: 1px solid var(--or-text);
     outline-offset: 3px;
