@@ -1,0 +1,339 @@
+/* Canonical OhRats Authenticated App Shell (shared by RC, Learn, and future web apps) */
+
+.site-shell {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    background: var(--or-bg);
+    transition: grid-template-columns 0.22s ease, background-color var(--or-theme-transition);
+}
+
+html[data-sidebar="closed"] .site-shell {
+    grid-template-columns: 56px minmax(0, 1fr);
+}
+
+.site-sidebar {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--or-bg);
+    border-right: 1px solid var(--or-border);
+    overflow: hidden;
+    transition: background-color var(--or-theme-transition), border-color var(--or-theme-transition);
+}
+
+.sidebar-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-brand {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    flex: none;
+    height: 54px;
+    padding: 0 48px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--or-bg);
+    border-bottom: 1px solid var(--or-border);
+    color: var(--or-text);
+    text-decoration: none;
+    transition: background-color var(--or-theme-transition), border-color var(--or-theme-transition);
+}
+
+.site-brand img {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--or-radius-sm);
+    object-fit: contain;
+    flex: none;
+}
+
+.site-brand strong {
+    font-family: var(--or-font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.sidebar-section {
+    padding: 14px 10px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar-section h2 {
+    padding: 0 8px 6px;
+    font-family: var(--or-font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--or-text-muted);
+}
+
+.nav-link {
+    min-height: 36px;
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    padding: 0 9px;
+    border-radius: var(--or-radius-sm);
+    color: var(--or-text-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.nav-link:hover,
+.nav-link.active,
+.nav-link[aria-current="page"] {
+    color: var(--or-text);
+    background: var(--or-surface-hover);
+}
+
+.nav-link.active,
+.nav-link[aria-current="page"] {
+    box-shadow: inset 2px 0 0 var(--or-accent);
+}
+
+.sidebar-footer {
+    flex: none;
+    padding: 8px 10px;
+    border-top: 1px solid var(--or-border);
+    transition: border-color var(--or-theme-transition);
+}
+
+.profile-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 36px 36px;
+    align-items: center;
+    gap: 4px;
+}
+
+.profile-link {
+    min-width: 0;
+    height: 38px;
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    padding: 0 7px;
+    border-radius: var(--or-radius-sm);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--or-text);
+    transition: background-color 0.15s ease;
+}
+
+.profile-link:hover {
+    background: var(--or-surface-hover);
+}
+
+.profile-link span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-initial {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--or-border);
+    border-radius: var(--or-radius-sm);
+    font-family: var(--or-font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.sidebar-footer .icon-button,
+.sidebar-footer .theme-toggle {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: var(--or-radius-sm);
+    background: transparent;
+    color: var(--or-text-muted);
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.sidebar-footer .icon-button:hover,
+.sidebar-footer .theme-toggle:hover {
+    color: var(--or-text);
+    background: var(--or-surface-hover);
+}
+
+/* Canonical sidebar collapse toggle (identical icon & placement across all OhRats apps) */
+.sidebar-toggle {
+    position: absolute;
+    z-index: 10;
+    top: 9px;
+    left: 215px;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: var(--or-radius-sm);
+    background: transparent;
+    color: var(--or-text-muted);
+    cursor: w-resize;
+    transition: left 0.22s ease, color 0.15s ease, background-color 0.15s ease;
+}
+
+.sidebar-toggle:hover {
+    background: var(--or-surface-hover);
+    color: var(--or-text);
+}
+
+.or-icon-sidebar {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: currentColor;
+    -webkit-mask: url("/sidebar.svg") center / contain no-repeat;
+    mask: url("/sidebar.svg") center / contain no-repeat;
+}
+
+html[data-sidebar="closed"] .sidebar-toggle {
+    left: 10px;
+    cursor: e-resize;
+}
+
+html[data-sidebar="closed"] .site-brand {
+    padding: 0 10px;
+}
+
+html[data-sidebar="closed"] .site-brand img {
+    visibility: hidden;
+}
+
+html[data-sidebar="closed"] .site-brand strong,
+html[data-sidebar="closed"] .sidebar-section h2,
+html[data-sidebar="closed"] .nav-link span:last-child,
+html[data-sidebar="closed"] .profile-name,
+html[data-sidebar="closed"] .sidebar-footer .theme-toggle,
+html[data-sidebar="closed"] .sidebar-footer .icon-button {
+    display: none;
+}
+
+html[data-sidebar="closed"] .sidebar-section {
+    padding: 10px 9px 4px;
+}
+
+html[data-sidebar="closed"] .nav-link {
+    width: 36px;
+    min-height: 36px;
+    grid-template-columns: 1fr;
+    place-items: center;
+    padding: 0;
+}
+
+html[data-sidebar="closed"] .sidebar-footer {
+    padding: 8px 9px;
+}
+
+html[data-sidebar="closed"] .profile-row {
+    display: block;
+}
+
+html[data-sidebar="closed"] .profile-link {
+    width: 36px;
+    grid-template-columns: 1fr;
+    padding: 0;
+    place-items: center;
+}
+
+.site-content {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    overflow: auto;
+    background: var(--or-bg);
+    transition: background-color var(--or-theme-transition);
+}
+
+/* Shared modal <dialog> centering (restores UA centering overridden by CSS reset) */
+dialog.or-dialog {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: min(520px, calc(100vw - 2rem));
+    width: 100%;
+    border: 1px solid var(--or-border);
+    border-radius: var(--or-radius-sm);
+    background: var(--or-surface);
+    color: var(--or-text);
+}
+
+dialog.or-dialog::backdrop {
+    background: rgba(26, 26, 27, 0.55);
+    backdrop-filter: blur(4px);
+}
+
+/* Shared mobile bottom navigation */
+.mobile-navigation {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    .site-shell,
+    html[data-sidebar="closed"] .site-shell {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr) auto;
+        transition: none;
+    }
+
+    .site-sidebar,
+    .sidebar-toggle {
+        display: none;
+    }
+
+    .mobile-navigation {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 4px;
+        padding: 6px max(8px, env(safe-area-inset-right)) max(6px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+        background: var(--or-bg);
+        border-top: 1px solid var(--or-border);
+    }
+
+    .mobile-nav-link {
+        min-height: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        color: var(--or-text-muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        border-radius: var(--or-radius-sm);
+    }
+
+    .mobile-nav-link.active,
+    .mobile-nav-link[aria-current="page"] {
+        color: var(--or-text);
+        background: var(--or-surface-hover);
+    }
+}

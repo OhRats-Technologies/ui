@@ -1,0 +1,55 @@
+.or-status-page {
+    position: relative;
+    min-height: clamp(34rem, 70svh, 48rem);
+    padding: clamp(4rem, 10vw, 8rem) 1.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.or-status-page > .ohrats-grid {
+    --or-grid-fade-start: 20%;
+    --or-grid-fade-end: 88%;
+    --or-grid-opacity: 0.32;
+}
+
+.or-status-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.or-status-code {
+    color: var(--or-text-muted);
+    font-family: var(--or-font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.or-status-title {
+    max-width: 12ch;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 700;
+    letter-spacing: -0.065em;
+    line-height: 0.92;
+}
+
+.or-status-copy {
+    max-width: 40rem;
+    color: var(--or-text-muted);
+    font-size: clamp(1rem, 1.25vw, 1.2rem);
+    line-height: 1.65;
+}
+
+.or-status-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}

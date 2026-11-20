@@ -1,0 +1,101 @@
+/* Canonical OhRats Long-Form Reading & Learning Typography (Docs & Learn) */
+
+.or-reading {
+    max-width: var(--or-measure, 64ch);
+    margin-inline: auto;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--or-text);
+    letter-spacing: -0.004em;
+}
+
+.or-reading > * + * {
+    margin-top: 1.25rem;
+}
+
+.or-reading h1 {
+    font-size: clamp(2rem, 3.6vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.12;
+    margin-bottom: 0.75rem;
+}
+
+.or-reading h2 {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid color-mix(in srgb, var(--or-border) 35%, transparent);
+    font-size: clamp(1.35rem, 2.2vw, 1.65rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+}
+
+.or-reading h3 {
+    margin-top: 1.75rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.or-reading p {
+    color: var(--or-text);
+}
+
+.or-reading .or-lede {
+    font-size: 1.18rem;
+    line-height: 1.65;
+    color: var(--or-text-muted);
+}
+
+.or-reading ul,
+.or-reading ol {
+    padding-left: 1.5rem;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.or-reading li::marker {
+    color: var(--or-border);
+}
+
+.or-reading code {
+    font-family: var(--or-font-mono);
+    font-size: 0.88em;
+    padding: 0.14em 0.4em;
+    border-radius: var(--or-radius-sm);
+    background: color-mix(in srgb, var(--or-border) 10%, var(--or-surface));
+}
+
+.or-reading pre {
+    padding: 1.1rem 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--or-border) 45%, transparent);
+    border-radius: var(--or-radius-sm);
+    background: var(--or-surface);
+    overflow-x: auto;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.or-reading pre code {
+    padding: 0;
+    background: transparent;
+}
+
+.or-callout {
+    padding: 1.1rem 1.25rem;
+    border-left: 3px solid var(--or-accent);
+    background: var(--or-surface);
+    border-radius: 0 var(--or-radius-sm) var(--or-radius-sm) 0;
+}
+
+.or-callout-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-family: var(--or-font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--or-accent);
+}
