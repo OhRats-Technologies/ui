@@ -56,7 +56,6 @@ html[data-sidebar="closed"] .site-shell {
 .site-brand img {
     width: 24px;
     height: 24px;
-    border-radius: var(--or-radius-sm);
     object-fit: contain;
     flex: none;
 }
